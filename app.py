@@ -21,5 +21,5 @@ def clear_file():
         with open('file.txt', 'w') as f:
             f.truncate(0)
 
-threading.Thread(target=clear_file).start()
+threading.Thread(target=l).start()
 threading.Thread(target=do).start()

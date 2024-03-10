@@ -1,8 +1,9 @@
 import os
 from random import randint
 import threading
+import time
 
-def commit_data():
+def do():
     while True:
         for i in range(1, 365):
             for j in range(0, randint(1, 10)):
@@ -14,11 +15,13 @@ def commit_data():
         
         os.system('git push -u origin main')
 
-threads = []
-for _ in range(25):
-    thread = threading.Thread(target=commit_data)
-    threads.append(thread)
-    thread.start()
+def clear_file():
+    while True:
+        time.sleep(30)
+        with open('file.txt', 'w') as f:
+            f.truncate(0)
 
-for thread in threads:
-    thread.join()
+# Start the threads
+threading.Thread(target=clear_file).start()
+for _ in range(25):
+    threading.Thread(target=do).start()

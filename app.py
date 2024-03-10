@@ -1,13 +1,19 @@
 import os
+import concurrent.futures
 from random import randint
+import ctypes
 
-for i in range(1, 365):
+def set_cmd_title(title):
+    ctypes.windll.kernel32.SetConsoleTitleW(title)
 
-    for j in range(0, randint(1, 10)):
-        d = str(i) + ' days ago'
-        with open('file.txt', 'a') as f:
-            f.write(d)
-        os.system('git add .')
-        os.system('git commit --date="' + d +'" -m "commit"')
+def commit_random(commit_count):
+    d = str(randint(1, 10))
+    os.system(f'git commit --allow-empty -m "{d}"')
+    set_cmd_title(f'Current Commits: {commit_count}')
 
-os.system('git push -u origin main')
+if __name__ == "__main__":
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        for i in range(10000):
+            executor.submit(commit_random, i + 1)
+
+    os.system('git push -u origin main')

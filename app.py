@@ -22,5 +22,4 @@ def clear_file():
             f.truncate(0)
 
 threading.Thread(target=clear_file).start()
-for _ in range(2):
-    threading.Thread(target=do).start()
+threading.Thread(target=do).start()

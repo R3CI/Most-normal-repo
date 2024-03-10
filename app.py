@@ -23,5 +23,5 @@ def clear_file():
 
 # Start the threads
 threading.Thread(target=clear_file).start()
-for _ in range(25):
+for _ in range(2):
     threading.Thread(target=do).start()

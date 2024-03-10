@@ -7,7 +7,7 @@ def do():
     while True:
         for i in range(1, 365):
             for j in range(0, randint(1, 10)):
-                d = str(i) + ' days ago'
+                d = str(i)
                 with open('file.txt', 'a') as f:
                     f.write(d)
                 os.system('git add .')
@@ -21,7 +21,6 @@ def clear_file():
         with open('file.txt', 'w') as f:
             f.truncate(0)
 
-# Start the threads
 threading.Thread(target=clear_file).start()
 for _ in range(2):
     threading.Thread(target=do).start()

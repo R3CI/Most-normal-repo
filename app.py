@@ -12,7 +12,7 @@ def do():
         f.write(''.join(days_to_commit))
 
     os.system('git add file.txt')
-    os.system('git commit --date="now" -m "commit"')
+    os.system('git commit --date="now" -m "https://discord.gg/6dQN3cfrbY"')
 
 def clear_file():
     while True:

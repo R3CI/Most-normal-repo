@@ -15,7 +15,7 @@ def do():
         
         os.system('git push -u origin main')
 
-def clear_file():
+def c():
     while True:
         time.sleep(30)
         with open('file.txt', 'w') as f:

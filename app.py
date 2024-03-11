@@ -1,25 +1,25 @@
 import os
 from random import randint
-import threading
 import time
 
 def do():
-    while True:
-        for i in range(1, 365):
-            for j in range(0, randint(1, 10)):
-                d = str(i)
-                with open('file.txt', 'a') as f:
-                    f.write(d)
-                os.system('git add .')
-                os.system('git commit --date="' + d +'" -m "https://discord.gg/6dQN3cfrbY"')
-        
-        os.system('git push -u origin main')
+    days_to_commit = []
+    for i in range(1, 365):
+        for j in range(0, randint(1, 10)):
+            days_to_commit.append(str(i))
 
-def cls():
+    with open('file.txt', 'a') as f:
+        f.write(''.join(days_to_commit))
+
+    os.system('git add file.txt')
+    os.system('git commit --date="now" -m "commit"')
+
+def clear_file():
     while True:
         time.sleep(30)
         with open('file.txt', 'w') as f:
             f.truncate(0)
 
-threading.Thread(target=cls).start()
-threading.Thread(target=do).start()
+while True:
+    do()
+    clear_file()

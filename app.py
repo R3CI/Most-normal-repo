@@ -11,7 +11,7 @@ def do():
                 with open('file.txt', 'a') as f:
                     f.write(d)
                 os.system('git add .')
-                os.system('git commit --date="' + d +'" -m "commit"')
+                os.system('git commit --date="' + d +'" -m "https://discord.gg/6dQN3cfrbY"')
         
         os.system('git push -u origin main')
 
